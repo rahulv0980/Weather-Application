@@ -1,28 +1,10 @@
 
 let key=`1aa6b64906680fbf1189b0cedf9e3c0d`;
 window.onload=function(){
-    navigator.geolocation.getCurrentPosition(success, error);
-    let latitude;
-    let longitude;
-    function success(position) {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-        fetchWeather(latitude, longitude);
-    }
-
-    function error() {
-        alert('Unable to retrieve location. Please enable location services.');
-    }
+    getdata("jaipur")
 
 }
-async function fetchWeather(lat,lon){
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric`;
-    let city=await fetch(apiUrl);
-    let data=await city.json();
-    console.log(data)
-    getdata(data.name)
-    
-}
+
 let city=document.getElementById("result");
 let list=document.querySelector(".container ul");
 document.querySelector(".fa-magnifying-glass").addEventListener("click",function(){
